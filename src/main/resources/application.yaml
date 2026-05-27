@@ -1,0 +1,75 @@
+spring:
+  profiles:
+    default: local
+  config:
+    import:
+      - optional:file:.env[.properties]
+      - optional:file:web/.env[.properties]
+
+  application:
+    name: food-delivery
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+server:
+  port: ${SERVER_PORT:8082}
+
+app:
+  cors:
+    allowed-origins: ${ALLOWED_ORIGINS:http://localhost:3000}
+  jwt:
+    secret: ${APP_JWT_SECRET:local-dev-secret-key-change-before-prod}
+    expiration: ${APP_JWT_EXPIRATION:86400000}
+  oauth:
+    google-client-ids: ${GOOGLE_CLIENT_IDS:}
+    apple-client-ids: ${APPLE_CLIENT_IDS:}
+
+cloudinary:
+  cloud-name: ${CLOUDINARY_CLOUD_NAME:local}
+  api-key: ${CLOUDINARY_API_KEY:local}
+  api-secret: ${CLOUDINARY_API_SECRET:local}
+
+razorpay:
+  key:
+    id: ${RAZORPAY_KEY_ID:local}
+    secret: ${RAZORPAY_KEY_SECRET:local}
+
+supabase:
+  url: ${SUPABASE_URL:}
+  key: ${SUPABASE_KEY:}
+  password-reset:
+    redirect-url: ${SUPABASE_PASSWORD_RESET_REDIRECT_URL:}
+    user-redirect-url: ${SUPABASE_USER_PASSWORD_RESET_REDIRECT_URL:}
+    partner-redirect-url: ${SUPABASE_PARTNER_PASSWORD_RESET_REDIRECT_URL:}
+
+payment:
+  admin-commission-percent: 15.0
+  convenience-fee: 5.0
+
+delivery:
+  free-distance-km: 7.0
+  per-km-charge: 5.0
+  base-charge: 40.0
+
+admin:
+  commission-percent: 15.0
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    enabled: ${SWAGGER_ENABLED:false}
+    path: /swagger-ui.html
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: when-authorized
