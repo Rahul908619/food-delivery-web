@@ -4,6 +4,16 @@ This repository contains the backend API for a food delivery application inspire
 
 The project covers the main workflow of a real food delivery system: user onboarding, restaurant registration, menu management, cart handling, order placement, payment verification, delivery tracking, reviews, and admin monitoring.
 
+## Frontend Applications
+
+This branch also includes the React frontend applications for the platform:
+
+- `user-app` for customers placing orders, managing profiles, and tracking deliveries.
+- `partner-panel` for restaurant owners and delivery partners.
+- `admin-panel` for platform administration, approvals, and reporting.
+
+Each frontend app is self-contained with its own `package.json`, static assets, and startup scripts.
+
 ## Project Objective
 
 The goal of this project is to demonstrate a production style backend for an online food delivery platform. The application separates responsibilities across controllers, services, repositories, DTOs, entities, security filters, and exception handlers so the code is easier to understand, test, and extend.
