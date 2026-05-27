@@ -107,15 +107,21 @@ Copy-Item .env.example .env
 
 Update `.env` with your local MySQL password and real service keys when required.
 
+For trainer or instructor review, keep the real `.env` file beside this README in the project root before running the backend. The file is intentionally ignored by Git, so it must be shared separately from the repository when someone else needs to run the full project with database, Cloudinary, Razorpay, and Supabase integration enabled.
+
 Required variables:
 
+- `SPRING_PROFILES_ACTIVE`
 - `SPRING_DATASOURCE_URL`
 - `SPRING_DATASOURCE_USERNAME`
 - `SPRING_DATASOURCE_PASSWORD`
 - `LOCAL_DATASOURCE_URL`
 - `LOCAL_DATASOURCE_USERNAME`
 - `LOCAL_DATASOURCE_PASSWORD`
+- `SERVER_PORT`
+- `ALLOWED_ORIGINS`
 - `APP_JWT_SECRET`
+- `APP_JWT_EXPIRATION`
 - `CLOUDINARY_CLOUD_NAME`
 - `CLOUDINARY_API_KEY`
 - `CLOUDINARY_API_SECRET`
@@ -123,6 +129,18 @@ Required variables:
 - `RAZORPAY_KEY_SECRET`
 - `SUPABASE_URL`
 - `SUPABASE_KEY`
+- `SUPABASE_PASSWORD_RESET_REDIRECT_URL`
+- `SUPABASE_USER_PASSWORD_RESET_REDIRECT_URL`
+- `SUPABASE_PARTNER_PASSWORD_RESET_REDIRECT_URL`
+
+## Instructor Run Checklist
+
+1. Install Java 17 and MySQL 8.
+2. Create the MySQL database or let the JDBC URL create it automatically.
+3. Place the real `.env` file in the project root.
+4. Run `.\mvnw.cmd test` to verify the backend context loads.
+5. Run `.\mvnw.cmd spring-boot:run` to start the API on port `8082`.
+6. Open `http://localhost:8082/swagger-ui.html` for endpoint testing when Swagger is enabled.
 
 ## Run Locally
 
@@ -214,4 +232,4 @@ The test profile uses H2, so tests do not require a running MySQL database.
 
 ## Git Branch
 
-The trainer-ready version is prepared on the `trainer-submission` branch.
+The trainer-ready version is maintained on the `backend` branch.
